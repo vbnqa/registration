@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إدخال بيانات لاعب البولينج</title>
-    <!-- إضافة خط عربي -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Amiri', serif;
+            font-family: sans-serif;
             background-color: #f4f4f4;
             margin: 20px;
         }
@@ -19,7 +17,7 @@
             background: #fff;
             padding: 20px;
             margin: 0 auto;
-            max-width: 500px;
+            max-width: 1000px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
@@ -40,7 +38,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-        input[type="submit"], input[type="reset"] {
+        input[type="submit"] {
             background-color: #800000;
             color: #fff;
             padding: 10px 20px;
@@ -48,9 +46,8 @@
             border: none;
             border-radius: 4px;
             font-size: 16px;
-            margin-top: 10px;
         }
-        input[type="submit"]:hover, input[type="reset"]:hover {
+        input[type="submit"]:hover {
             background-color: #550000;
         }
         .note {
@@ -59,21 +56,12 @@
             margin-top: -5px;
             margin-bottom: 10px;
         }
-        img#previewPhoto {
-            max-width: 100%;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
     </style>
 </head>
 <body>
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="logo.png" alt="شعار الفريق" width="150">
-    </div>
     <h1>صفحة إدخال بيانات لاعب البولينج</h1>
-    <h2>املأ بياناتك بدقّة… اللون العنّابي لون الأبطال!</h2>
-    <form id="playerForm" action="players-list.htm" method="POST" enctype="multipart/form-data">
+    <h2>لجنة المراكز والتطوير</h2>
+    <form id="playerForm" action="players-list.htm" method="GET">
         <label for="playerName">اسم اللاعب:</label>
         <input type="text" id="playerName" name="playerName" placeholder="أدخل اسم اللاعب" required>
 
@@ -81,27 +69,26 @@
         <input type="date" id="birthDate" name="birthDate" required>
 
         <label for="birthPlace">مكان الميلاد:</label>
-        <input type="text" id="birthPlace" name="birthPlace" placeholder="مثال: الرياض" required>
+        <input type="text" id="birthPlace" name="birthPlace" placeholder="الدوحة" required>
 
         <label for="nationality">الجنسية:</label>
-        <input type="text" id="nationality" name="nationality" placeholder="مثال: سعودي" required>
+        <input type="text" id="nationality" name="nationality" placeholder="مثال: قطري" required>
 
         <label for="idNumber">رقم البطاقة الشخصية:</label>
-        <input type="text" id="idNumber" name="idNumber" placeholder="مثال: 1234567890" pattern="[0-9]{10}" required>
+        <input type="text" id="idNumber" name="idNumber" placeholder="مثال: 1234567890" required>
 
         <label for="address">العنوان:</label>
-        <input type="text" id="address" name="address" placeholder="مثال: شارع الكرة الذهبية، جدة" required>
+        <input type="text" id="address" name="address" placeholder="الريان" required>
 
         <label for="phoneNumber">رقم الهاتف:</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="مثال: 05XXXXXXXX" pattern="05[0-9]{8}" required>
+        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="12345678" required>
 
         <label for="emailAddress">البريد الإلكتروني:</label>
-        <input type="email" id="emailAddress" name="emailAddress" placeholder="مثال: player@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+        <input type="email" id="emailAddress" name="emailAddress" placeholder="مثال: player@example.com" required>
 
         <label for="playerPhoto">صورة اللاعب:</label>
         <input type="file" id="playerPhoto" name="playerPhoto" accept="image/*" required>
-        <img id="previewPhoto" src="#" alt="صورة اللاعب" style="display: none;">
-        <span class="note">يفضّل التقاط صورة جذابة أثناء الاستعداد لرمي كرة البولينج!</span>
+        <span class="note">صورة شخصية مثل صورة الجواز</span>
 
         <label for="suitSize">مقاس البدلة الرياضية:</label>
         <input type="text" id="suitSize" name="suitSize" placeholder="مثال: L أو 52" required>
@@ -117,35 +104,9 @@
 
         <label for="ballWeight">وزن كرة البولينج (بالرطل):</label>
         <input type="number" id="ballWeight" name="ballWeight" placeholder="مثال: 14" min="6" max="16" required>
-        <span class="note">يُذكَر أن الأوزان الشائعة لكرة البولينج تتراوح بين 6 و16 رطلاً.</span>
+        <span class="note">.</span>
 
-        <input type="submit" value="تسجيل اللاعب">
-        <input type="reset" value="مسح البيانات">
+        <input type="submit" value="تسجيل اللاعب">     
     </form>
-
-    <script>
-        // عرض الصورة فور اختيارها
-        document.getElementById('playerPhoto').addEventListener('change', function () {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('previewPhoto').src = e.target.result;
-                    document.getElementById('previewPhoto').style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // التحقق الفوري من رقم الهاتف
-        document.getElementById('phoneNumber').addEventListener('input', function () {
-            const phoneNumber = this.value;
-            if (!/05[0-9]{8}/.test(phoneNumber)) {
-                this.style.borderColor = 'red';
-            } else {
-                this.style.borderColor = 'green';
-            }
-        });
-    </script>
 </body>
 </html>
