@@ -75,18 +75,46 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><?php echo $_GET["playerName"]; ?></td>
-                <td><?php echo $_GET["birthDate"]; ?></td>
-                <td><?php echo $_GET["birthPlace"]; ?></td>
-                <td><?php echo $_GET["nationality"]; ?></td>
-                <td><?php echo $_GET["idNumber"]; ?></td>
-                <td><?php echo $_GET["address"]; ?></td>
-                <td><?php echo $_GET["phoneNumber"]; ?></td>
-                <td><?php echo $_GET["emailAddress"]; ?></td>
-                <td><img src="https://via.placeholder.com/50" alt="صورة اللاعب"></td>
-                <td><a href="player-details.html?player=1" target="_blank">عرض التفاصيل</a></td>
-            </tr>
+            <?php
+            // التحقق من وجود بيانات اللاعبين
+            if (
+                isset($_GET["playerName"]) &&
+                isset($_GET["birthDate"]) &&
+                isset($_GET["birthPlace"]) &&
+                isset($_GET["nationality"]) &&
+                isset($_GET["idNumber"]) &&
+                isset($_GET["address"]) &&
+                isset($_GET["phoneNumber"]) &&
+                isset($_GET["emailAddress"])
+            ) {
+                // جلب بيانات اللاعبين
+                $playerName = htmlspecialchars($_GET["playerName"]);
+                $birthDate = htmlspecialchars($_GET["birthDate"]);
+                $birthPlace = htmlspecialchars($_GET["birthPlace"]);
+                $nationality = htmlspecialchars($_GET["nationality"]);
+                $idNumber = htmlspecialchars($_GET["idNumber"]);
+                $address = htmlspecialchars($_GET["address"]);
+                $phoneNumber = htmlspecialchars($_GET["phoneNumber"]);
+                $emailAddress = htmlspecialchars($_GET["emailAddress"]);
+
+                // عرض بيانات اللاعبين في جدول
+                echo "<tr>";
+                echo "<td>" . $playerName . "</td>";
+                echo "<td>" . $birthDate . "</td>";
+                echo "<td>" . $birthPlace . "</td>";
+                echo "<td>" . $nationality . "</td>";
+                echo "<td>" . $idNumber . "</td>";
+                echo "<td>" . $address . "</td>";
+                echo "<td>" . $phoneNumber . "</td>";
+                echo "<td>" . $emailAddress . "</td>";
+                echo "<td><img src='https://via.placeholder.com/50' alt='صورة اللاعب'></td>";
+                echo "<td><a href='player-details.html?player=1' target='_blank'>عرض التفاصيل</a></td>";
+                echo "</tr>";
+            } else {
+                // عرض رسالة في حالة عدم وجود بيانات
+                echo "<tr><td colspan='10'>لا توجد بيانات لاعبين.</td></tr>";
+            }
+            ?>
         </tbody>
     </table>
     <a href="index.htm" class="back-btn">عودة إلى صفحة الإدخال</a>
