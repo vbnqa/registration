@@ -55,14 +55,39 @@
         .back-btn:hover {
             background-color: #550000;
         }
+        .details-btn {
+            background-color: #800000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .details-btn:hover {
+            background-color: #550000;
+        }
     </style>
 </head>
 <body>
-    <h1>بيانات جميع اللاعبين</h1>
 
+<?php
+    // التحقق من المتغيرات القادمة عبر GET
+    $playerName   = isset($_GET["playerName"])   ? htmlspecialchars($_GET["playerName"])   : "";
+    $birthDate    = isset($_GET["birthDate"])    ? htmlspecialchars($_GET["birthDate"])    : "";
+    $birthPlace   = isset($_GET["birthPlace"])   ? htmlspecialchars($_GET["birthPlace"])   : "";
+    $nationality  = isset($_GET["nationality"])  ? htmlspecialchars($_GET["nationality"])   : "";
+    $idNumber     = isset($_GET["idNumber"])     ? htmlspecialchars($_GET["idNumber"])      : "";
+    $address      = isset($_GET["address"])      ? htmlspecialchars($_GET["address"])       : "";
+    $phoneNumber  = isset($_GET["phoneNumber"])  ? htmlspecialchars($_GET["phoneNumber"])   : "";
+    $emailAddress = isset($_GET["emailAddress"]) ? htmlspecialchars($_GET["emailAddress"])  : "";
+?>
+
+    <h1>بيانات جميع اللاعبين</h1>
     <table>
         <thead>
             <tr>
+                <th>الرقم التسلسلي</th>
                 <th>اسم اللاعب</th>
                 <th>تاريخ الميلاد</th>
                 <th>مكان الميلاد</th>
@@ -76,38 +101,26 @@
             </tr>
         </thead>
         <tbody>
-            <!-- بيانات اللاعب الأول -->
             <tr>
-                <td>أحمد علي</td>
-                <td>1990-05-15</td>
-                <td>الرياض</td>
-                <td>سعودي</td>
-                <td>1234567890</td>
-                <td>شارع الملك فهد، الرياض</td>
-                <td>0512345678</td>
-                <td>ahmed@example.com</td>
+                <!-- يمكنك تغيير الرقم كما تشاء، أو إذا لديك حلقة تكرار بإمكانك استخدام متغير للرقم التسلسلي -->
+                <td>1</td>
+                <td><?php echo $playerName; ?></td>
+                <td><?php echo $birthDate; ?></td>
+                <td><?php echo $birthPlace; ?></td>
+                <td><?php echo $nationality; ?></td>
+                <td><?php echo $idNumber; ?></td>
+                <td><?php echo $address; ?></td>
+                <td><?php echo $phoneNumber; ?></td>
+                <td><?php echo $emailAddress; ?></td>
                 <td><img src="https://via.placeholder.com/50" alt="صورة اللاعب"></td>
-                <td><a href="player-details.html?player=1" target="_blank">عرض التفاصيل</a></td>
+                <!-- في حال أردت تمرير المعلمات إلى صفحة التفاصيل بديناميكية، غيّر الرابط أدناه -->
+                <td>
+                    <a href="player-details.php?player=<?php echo $idNumber; ?>" target="_blank" class="details-btn">عرض التفاصيل</a>
+                </td>
             </tr>
-
-            <!-- بيانات اللاعب الثاني -->
-            <tr>
-                <td>محمد خالد</td>
-                <td>1985-08-22</td>
-                <td>جدة</td>
-                <td>سعودي</td>
-                <td>0987654321</td>
-                <td>حي الأندلس، جدة</td>
-                <td>0598765432</td>
-                <td>mohammed@example.com</td>
-                <td><img src="https://via.placeholder.com/50" alt="صورة اللاعب"></td>
-                <td><a href="player-details.html?player=2" target="_blank">عرض التفاصيل</a></td>
-            </tr>
-
-            <!-- يمكنك إضافة المزيد من اللاعبين هنا -->
         </tbody>
     </table>
-
-    <a href="index.htm" class="back-btn">عودة إلى صفحة الإدخال</a>
+    <!-- تأكد أيضاً أن صفحة الإدخال تحمل اللاحقة PHP إذا كانت تستخدم PHP -->
+    <a href="index.php" class="back-btn">عودة إلى صفحة الإدخال</a>
 </body>
 </html>
