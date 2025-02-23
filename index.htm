@@ -3,178 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل لاعب جديد</title>
+    <title>إدخال بيانات لاعب البولينج</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: sans-serif;
             background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
+            margin: 20px;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
+        h1, h2 {
+            text-align: center;
+        }
+        form {
             background: #fff;
             padding: 20px;
+            margin: 0 auto;
+            max-width: 500px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         label {
             display: block;
-            margin-top: 10px;
-            color: #555;
+            margin: 10px 0 5px;
+            font-weight: bold;
         }
-        input[type="text"], input[type="email"], input[type="date"], select, textarea {
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        input[type="email"],
+        input[type="date"] {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-        button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            background-color: #800000; /* لون الماروني */
-            color: white;
+        input[type="submit"] {
+            background-color: #800000;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
             border: none;
             border-radius: 4px;
-            cursor: pointer;
+            font-size: 16px;
         }
-        button:hover {
-            background-color: #6a0000; /* درجة داكنة من الماروني عند التحويم */
+        input[type="submit"]:hover {
+            background-color: #550000;
+        }
+        .note {
+            font-size: 14px;
+            color: #555;
+            margin-top: -5px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
+    <h1>صفحة إدخال بيانات لاعب البولينج</h1>
+    <h2>املأ بياناتك بدقّة… اللون العنّابي لون الأبطال!</h2>
+    <form id="playerForm" action="players-list.htm" method="GET">
+        <label for="playerName">اسم اللاعب:</label>
+        <input type="text" id="playerName" name="playerName" placeholder="أدخل اسم اللاعب" required>
 
-<div class="container">
-    <h1>تسجيل لاعب جديد</h1>
-    <form id="playerForm">
-        <label for="fullName">اسم اللاعب بالكامل:</label>
-        <input type="text" id="fullName" name="fullName" required>
+        <label for="birthDate">تاريخ الميلاد:</label>
+        <input type="date" id="birthDate" name="birthDate" required>
 
-        <label for="dob">تاريخ الميلاد:</label>
-        <input type="date" id="dob" name="dob" required>
-
-        <label for="placeOfBirth">مكان الميلاد:</label>
-        <input type="text" id="placeOfBirth" name="placeOfBirth" required>
+        <label for="birthPlace">مكان الميلاد:</label>
+        <input type="text" id="birthPlace" name="birthPlace" placeholder="مثال: الرياض" required>
 
         <label for="nationality">الجنسية:</label>
-        <input type="text" id="nationality" name="nationality" required>
+        <input type="text" id="nationality" name="nationality" placeholder="مثال: سعودي" required>
 
-        <label for="idNumber">رقم الهوية القطرية أو جواز السفر:</label>
-        <input type="text" id="idNumber" name="idNumber" required>
+        <label for="idNumber">رقم البطاقة الشخصية:</label>
+        <input type="text" id="idNumber" name="idNumber" placeholder="مثال: 1234567890" required>
 
-        <label for="address">العنوان الحالي:</label>
-        <input type="text" id="address" name="address" required>
+        <label for="address">العنوان:</label>
+        <input type="text" id="address" name="address" placeholder="مثال: شارع الكرة الذهبية، جدة" required>
 
-        <label for="phone">رقم الهاتف الشخصي:</label>
-        <input type="text" id="phone" name="phone" required>
+        <label for="phoneNumber">رقم الهاتف:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="مثال: 05XXXXXXXX" required>
 
-        <label for="email">البريد الإلكتروني:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="emailAddress">البريد الإلكتروني:</label>
+        <input type="email" id="emailAddress" name="emailAddress" placeholder="مثال: player@example.com" required>
 
-        <label for="photo">صورة شخصية حديثة:</label>
-        <input type="file" id="photo" name="photo" accept="image/*" required>
+        <label for="playerPhoto">صورة اللاعب:</label>
+        <input type="file" id="playerPhoto" name="playerPhoto" accept="image/*" required>
+        <span class="note">يفضّل التقاط صورة جذابة أثناء الاستعداد لرمي كرة البولينج!</span>
 
-        <!-- مقاسات الملابس الرياضية -->
-        <h2>مقاسات الملابس الرياضية</h2>
         <label for="suitSize">مقاس البدلة الرياضية:</label>
-        <input type="text" id="suitSize" name="suitSize" placeholder="مثال: L" required>
+        <input type="text" id="suitSize" name="suitSize" placeholder="مثال: L أو 52" required>
 
-        <label for="tShirtSize">مقاس التيشرت الرياضي:</label>
-        <input type="text" id="tShirtSize" name="tShirtSize" placeholder="مثال: M" required>
+        <label for="tshirtSize">مقاس التيشيرت:</label>
+        <input type="text" id="tshirtSize" name="tshirtSize" placeholder="مثال: M أو 48" required>
 
-        <label for="shoeSize">مقاس الحذاء الرياضي:</label>
-        <input type="text" id="shoeSize" name="shoeSize" placeholder="مثال: 42" required>
+        <label for="sportShoeSize">مقاس الحذاء الرياضي:</label>
+        <input type="number" id="sportShoeSize" name="sportShoeSize" placeholder="مثال: 42" min="30" max="50" required>
 
         <label for="bowlingShoeSize">مقاس حذاء البولينج:</label>
-        <input type="text" id="bowlingShoeSize" name="bowlingShoeSize" placeholder="مثال: 43" required>
+        <input type="number" id="bowlingShoeSize" name="bowlingShoeSize" placeholder="مثال: 42" min="30" max="50" required>
 
-        <label for="ballWeight">وزن كرة البولينج المفضلة (بالأرطال):</label>
-        <input type="text" id="ballWeight" name="ballWeight" placeholder="مثال: 16" required>
+        <label for="ballWeight">وزن كرة البولينج (بالرطل):</label>
+        <input type="number" id="ballWeight" name="ballWeight" placeholder="مثال: 14" min="6" max="16" required>
+        <span class="note">يُذكَر أن الأوزان الشائعة لكرة البولينج تتراوح بين 6 و16 رطلاً.</span>
 
-        <button type="submit">إرسال الطلب</button>
+        <input type="submit" value="تسجيل اللاعب">
     </form>
-</div>
-
-<script>
-    // تخزين بيانات اللاعبين في localStorage
-    const playerForm = document.getElementById('playerForm');
-
-    playerForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // جمع البيانات من الحقول
-        const fullName = document.getElementById('fullName').value;
-        const dob = document.getElementById('dob').value;
-        const placeOfBirth = document.getElementById('placeOfBirth').value;
-        const nationality = document.getElementById('nationality').value;
-        const idNumber = document.getElementById('idNumber').value;
-        const address = document.getElementById('address').value;
-        const phone = document.getElementById('phone').value;
-        const email = document.getElementById('email').value;
-        const photo = document.getElementById('photo').files[0];
-        const suitSize = document.getElementById('suitSize').value;
-        const tShirtSize = document.getElementById('tShirtSize').value;
-        const shoeSize = document.getElementById('shoeSize').value;
-        const bowlingShoeSize = document.getElementById('bowlingShoeSize').value;
-        const ballWeight = document.getElementById('ballWeight').value;
-
-        // تحويل الصورة إلى عنوان URL
-        const photoUrl = URL.createObjectURL(photo);
-
-        // إنشاء كائن للاعب
-        const player = {
-            fullName,
-            dob,
-            placeOfBirth,
-            nationality,
-            idNumber,
-            address,
-            phone,
-            email,
-            photoUrl,
-            suitSize,
-            tShirtSize,
-            shoeSize,
-            bowlingShoeSize,
-            ballWeight
-        };
-
-        // استرجاع بيانات اللاعبين السابقة من localStorage
-        let players = JSON.parse(localStorage.getItem('players')) || [];
-
-        // إضافة اللاعب الجديد إلى القائمة
-        players.push(player);
-
-        // حفظ البيانات في localStorage
-        localStorage.setItem('players', JSON.stringify(players));
-
-        // إعادة تعيين النموذج
-        playerForm.reset();
-
-        alert('تم تسجيل اللاعب بنجاح!');
-    });
-</script>
-
 </body>
-</html><!DOCTYPE HTML>
-
-<html>
-
-<head>
-  <title>Untitled</title>
-</head>
-
-<body>
-
-</body>
-
 </html>
