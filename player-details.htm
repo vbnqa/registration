@@ -48,106 +48,12 @@
             text-decoration: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
         .print-btn:hover {
             background-color: #550000;
         }
-    </style>
-</head>
-<body>
-    <div class="player-details">
-        <img id="playerImage" src="" alt="صورة اللاعب">
-        <h1 id="playerName">تفاصيل اللاعب</h1>
-        <table>
-            <tr>
-                <th>تاريخ الميلاد:</th>
-                <td id="birthDate">-</td>
-            </tr>
-            <tr>
-                <th>مكان الميلاد:</th>
-                <td id="birthPlace">-</td>
-            </tr>
-            <tr>
-                <th>الجنسية:</th>
-                <td id="nationality">-</td>
-            </tr>
-            <tr>
-                <th>رقم البطاقة الشخصية:</th>
-                <td id="idNumber">-</td>
-            </tr>
-            <tr>
-                <th>العنوان:</th>
-                <td id="address">-</td>
-            </tr>
-            <tr>
-                <th>رقم الهاتف:</th>
-                <td id="phoneNumber">-</td>
-            </tr>
-            <tr>
-                <th>البريد الإلكتروني:</th>
-                <td id="emailAddress">-</td>
-            </tr>
-        </table>
-        <button class="print-btn" onclick="window.print()">طباعة</button>
-    </div>
-
-    <script>
-        // بيانات اللاعبين
-        const players = {
-            1: {
-                name: "أحمد محمد",
-                birthDate: "1990-05-15",
-                birthPlace: "الرياض",
-                nationality: "سعودي",
-                idNumber: "1234567890",
-                address: "شارع الكرة الذهبية، جدة",
-                phoneNumber: "0512345678",
-                emailAddress: "ahmed@example.com",
-                image: "https://via.placeholder.com/100"
-            },
-            2: {
-                name: "فهد علي",
-                birthDate: "1985-08-20",
-                birthPlace: "جدة",
-                nationality: "سعودي",
-                idNumber: "0987654321",
-                address: "حي السلام، الرياض",
-                phoneNumber: "0598765432",
-                emailAddress: "fahad@example.com",
-                image: "https://via.placeholder.com/100"
-            },
-            3: {
-                name: "سلطان خالد",
-                birthDate: "1995-03-10",
-                birthPlace: "الدمام",
-                nationality: "سعودي",
-                idNumber: "1122334455",
-                address: "شارع الخليج، الدمام",
-                phoneNumber: "0555555555",
-                emailAddress: "sultan@example.com",
-                image: "https://via.placeholder.com/100"
-            }
-        };
-
-        // استخراج معرف اللاعب من عنوان URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const playerId = urlParams.get('player');
-
-        // عرض بيانات اللاعب بناءً على المعرف
-        if (playerId && players[playerId]) {
-            const player = players[playerId];
-            document.getElementById('playerName').textContent = `تفاصيل اللاعب: ${player.name}`;
-            document.getElementById('birthDate').textContent = player.birthDate;
-            document.getElementById('birthPlace').textContent = player.birthPlace;
-            document.getElementById('nationality').textContent = player.nationality;
-            document.getElementById('idNumber').textContent = player.idNumber;
-            document.getElementById('address').textContent = player.address;
-            document.getElementById('phoneNumber').textContent = player.phoneNumber;
-            document.getElementById('emailAddress').textContent = player.emailAddress;
-            document.getElementById('playerImage').src = player.image;
-        } else {
-            document.getElementById('playerName').textContent = "لم يتم العثور على بيانات اللاعب.";
-        }
-    </script>
-</body>
-</html>
+        .error-message {
+            text-align: center;
+            color: red
