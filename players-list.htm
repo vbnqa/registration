@@ -70,19 +70,6 @@
     </style>
 </head>
 <body>
-
-<?php
-    // التحقق من المتغيرات القادمة عبر GET
-    $playerName   = isset($_GET["playerName"])   ? htmlspecialchars($_GET["playerName"])   : "";
-    $birthDate    = isset($_GET["birthDate"])    ? htmlspecialchars($_GET["birthDate"])    : "";
-    $birthPlace   = isset($_GET["birthPlace"])   ? htmlspecialchars($_GET["birthPlace"])   : "";
-    $nationality  = isset($_GET["nationality"])  ? htmlspecialchars($_GET["nationality"])   : "";
-    $idNumber     = isset($_GET["idNumber"])     ? htmlspecialchars($_GET["idNumber"])      : "";
-    $address      = isset($_GET["address"])      ? htmlspecialchars($_GET["address"])       : "";
-    $phoneNumber  = isset($_GET["phoneNumber"])  ? htmlspecialchars($_GET["phoneNumber"])   : "";
-    $emailAddress = isset($_GET["emailAddress"]) ? htmlspecialchars($_GET["emailAddress"])  : "";
-?>
-
     <h1>بيانات جميع اللاعبين</h1>
     <table>
         <thead>
@@ -102,25 +89,23 @@
         </thead>
         <tbody>
             <tr>
-                <!-- يمكنك تغيير الرقم كما تشاء، أو إذا لديك حلقة تكرار بإمكانك استخدام متغير للرقم التسلسلي -->
+                <!-- يمكن تعديل البيانات أدناه يدوياً عند الحاجة أو استخدام تقنية أخرى لقراءة بارامترات GET في ملف مختلف-->
                 <td>1</td>
-                <td><?php echo $playerName; ?></td>
-                <td><?php echo $birthDate; ?></td>
-                <td><?php echo $birthPlace; ?></td>
-                <td><?php echo $nationality; ?></td>
-                <td><?php echo $idNumber; ?></td>
-                <td><?php echo $address; ?></td>
-                <td><?php echo $phoneNumber; ?></td>
-                <td><?php echo $emailAddress; ?></td>
+                <td>اسم اللاعب</td>
+                <td>تاريخ الميلاد</td>
+                <td>مكان الميلاد</td>
+                <td>الجنسية</td>
+                <td>رقم البطاقة</td>
+                <td>العنوان</td>
+                <td>رقم الهاتف</td>
+                <td>example@email.com</td>
                 <td><img src="https://via.placeholder.com/50" alt="صورة اللاعب"></td>
-                <!-- في حال أردت تمرير المعلمات إلى صفحة التفاصيل بديناميكية، غيّر الرابط أدناه -->
                 <td>
-                    <a href="player-details.php?player=<?php echo $idNumber; ?>" target="_blank" class="details-btn">عرض التفاصيل</a>
+                    <a href="player-details.html" target="_blank" class="details-btn">عرض التفاصيل</a>
                 </td>
             </tr>
         </tbody>
     </table>
-    <!-- تأكد أيضاً أن صفحة الإدخال تحمل اللاحقة PHP إذا كانت تستخدم PHP -->
-    <a href="index.php" class="back-btn">عودة إلى صفحة الإدخال</a>
+    <a href="index.htm" class="back-btn">عودة إلى صفحة الإدخال</a>
 </body>
 </html>
